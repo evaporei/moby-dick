@@ -1,0 +1,6 @@
+[package]
+name = "docker_wannabe"
+version = "0.1.0"
+authors = ["Otávio Pace <otaviopp8@gmail.com>"]
+
+[dependencies]
