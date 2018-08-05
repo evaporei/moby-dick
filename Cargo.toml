@@ -1,6 +1,0 @@
-[package]
-name = "moby-dick"
-version = "0.1.0"
-authors = ["Otávio Pace <otaviopp8@gmail.com>"]
-
-[dependencies]
