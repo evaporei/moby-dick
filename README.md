@@ -123,3 +123,18 @@ You will get a result similar to this one:
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 
 ```
+
+## Filesystem
+
+It just separates the mounts that you do inside of the container.
+Running `mount` inside of it should have this output:
+
+```bash
+...
+none on /mytmp type tmpfs (rw,relatime)
+```
+
+Observations:
+1. This project does not yet creates a filesystem jail.
+2. It is required to have the `/mytmp` directory.
+
