@@ -17,6 +17,16 @@ static int child_exec(void *stuff)
 {
   struct clone_args *args = (struct clone_args *)stuff;
 
+  if (umount("/proc", 0) != 0) {
+    fprintf(stderr, "failed to umount /proc %s\n", strerror(errno));
+    exit(-1);
+  }
+
+  if (mount("proc", "/proc", "proc", 0, "") != 0) {
+    fprintf(stderr, "failed to mount /proc %s\n", strerror(errno));
+    exit(-1);
+  }
+
   const char *default_hostname = "containerhostname";
 
   if (sethostname(default_hostname, strlen(default_hostname)) != 0) {
@@ -43,7 +53,8 @@ int main(int argc, char **argv)
   struct clone_args args;
   args.argv = &argv[1];
 
-  int clone_flags = CLONE_NEWIPC | CLONE_NEWUTS | CLONE_NEWNS | CLONE_NEWNET | SIGCHLD;
+  /* int clone_flags = CLONE_NEWPID | SIGCHLD; */
+  int clone_flags = CLONE_NEWPID | CLONE_NEWIPC | CLONE_NEWUTS | CLONE_NEWNS | CLONE_NEWNET | SIGCHLD;
 
   // this is the pid of the new process cloned
   pid_t pid = clone(child_exec, child_stack + STACKSIZE, clone_flags, &args);
