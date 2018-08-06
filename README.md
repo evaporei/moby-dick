@@ -138,3 +138,28 @@ Observations:
 1. This project does not yet creates a filesystem jail.
 2. It is required to have the `/mytmp` directory.
 
+
+## System identification
+
+When you run a `moby-dick` container, it isolates the `hostname`. The default one is `containerhostname`.
+
+Below is an example that ilustrates how the isolation works.
+
+```bash
+> ./build/moby-dick /bin/bash
+
+> hostname
+containerhostname
+
+> hostname josh
+josh
+
+> hostname
+josh
+
+> exit
+exit
+
+> hostname
+intacthostname
+```

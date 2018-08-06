@@ -17,6 +17,13 @@ static int child_exec(void *stuff)
 {
   struct clone_args *args = (struct clone_args *)stuff;
 
+  const char *default_hostname = "containerhostname";
+
+  if (sethostname(default_hostname, strlen(default_hostname)) != 0) {
+    fprintf(stderr, "failed to set hostname %s\n", strerror(errno));
+    exit(-1);
+  }
+
   if (mount("none", "/mytmp", "tmpfs", 0, "") != 0) {
     fprintf(stderr, "failed to mount tmpfs %s\n", strerror(errno));
     exit(-1);
@@ -36,7 +43,7 @@ int main(int argc, char **argv)
   struct clone_args args;
   args.argv = &argv[1];
 
-  int clone_flags = CLONE_NEWNS | CLONE_NEWNET | SIGCHLD;
+  int clone_flags = CLONE_NEWUTS | CLONE_NEWNS | CLONE_NEWNET | SIGCHLD;
 
   // this is the pid of the new process cloned
   pid_t pid = clone(child_exec, child_stack + STACKSIZE, clone_flags, &args);
