@@ -190,3 +190,7 @@ key        msqid      owner      perms      used-bytes   messages
 
 # no message queue results
 ```
+
+# Considerations
+
+:warning: **Don't use this in production, this project is an experiment to learn and understand a bit of what tools like Docker do**
