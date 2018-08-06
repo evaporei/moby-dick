@@ -190,3 +190,7 @@ key        msqid      owner      perms      used-bytes   messages
 
 # no message queue results
 ```
+
+## Process IDs
+
+If you run `ps` inside of the container, you should not see the processes outside of it.
