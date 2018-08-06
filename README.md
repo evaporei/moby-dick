@@ -165,3 +165,28 @@ exit
 > hostname
 intacthostname
 ```
+
+## Interprocess Communication
+
+Example of isolation of IPCs:
+
+```bash
+# this creates a message queue
+> ipcmk -Q
+
+# this lists the message queues
+> ipcs -q
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages
+0xd6faa747 0          otaviopace 644        0            0
+
+# entering the container
+> ./build/moby-dick /bin/bash
+
+> ipcs -q
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages
+
+# no message queue results
+```
