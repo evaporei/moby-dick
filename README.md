@@ -124,7 +124,7 @@ You will get a result similar to this one:
 
 ```
 
-## Filesystem
+### Filesystem
 
 It just separates the mounts that you do inside of the container.
 Running `mount` inside of it should have this output:
@@ -141,7 +141,7 @@ Observations:
 2. It is required to have the `/mytmp` directory.
 
 
-## System identification
+### System identification
 
 When you run a `moby-dick` container, it isolates the `hostname`. The default one is `containerhostname`.
 
@@ -166,7 +166,7 @@ exit
 intacthostname
 ```
 
-## Interprocess Communication
+### Interprocess Communication
 
 Example of isolation of IPCs:
 
@@ -190,3 +190,7 @@ key        msqid      owner      perms      used-bytes   messages
 
 # no message queue results
 ```
+
+## Considerations
+
+:warning: **Don't use this in production, this project is an experiment to learn and understand a bit of what tools like Docker do**
