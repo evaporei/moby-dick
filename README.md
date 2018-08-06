@@ -190,3 +190,7 @@ key        msqid      owner      perms      used-bytes   messages
 
 # no message queue results
 ```
+
+## Users
+
+When you enter the container it should be using a undefined user and group, so anything you do won't be associated with the other users.
