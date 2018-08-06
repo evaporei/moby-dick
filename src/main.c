@@ -31,7 +31,7 @@ int main(int argc, char **argv)
   struct clone_args args;
   args.argv = &argv[1];
 
-  int clone_flags = SIGCHLD;
+  int clone_flags = CLONE_NEWNET | SIGCHLD;
 
   // this is the pid of the new process cloned
   pid_t pid = clone(child_exec, child_stack + STACKSIZE, clone_flags, &args);
