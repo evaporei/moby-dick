@@ -7,13 +7,13 @@
 First you need to have a `build` directory. To solve that just run:
 
 ```bash
-mkdir build
+> mkdir build
 ```
 
 For building the project just run:
 
 ```bash
-make build
+> make build
 ```
 
 ## How to run
@@ -22,14 +22,14 @@ After you have built the project, you will have a binary named `moby-dick` insid
 Just run it by using:
 
 ```bash
-./build/moby-dick
+> ./build/moby-dick
 ```
 
 If you just do as above, nothing will happen. So you have to pass as an argument the command you want to run in a isolated enviroment.
 Here is an example:
 
 ```bash
-./build/moby-dick /bin/bash
+> ./build/moby-dick /bin/bash
 ```
 
 ## What kinds of isolation does this create?
@@ -39,7 +39,7 @@ Here is an example:
 If you run this command:
 
 ```bash
-ip a
+> ip a
 ```
 
 You will view all network interfaces of your host machine.
@@ -111,9 +111,9 @@ This is an example output:
 If you do the same inside of the container, like this:
 
 ```bash
-./build/moby-dick /bin/bash
+> ./build/moby-dick /bin/bash
 
-ip a
+> ip a
 ```
 
 You will get a result similar to this one:
@@ -130,6 +130,8 @@ It just separates the mounts that you do inside of the container.
 Running `mount` inside of it should have this output:
 
 ```bash
+# inside container
+> mount
 ...
 none on /mytmp type tmpfs (rw,relatime)
 ```
